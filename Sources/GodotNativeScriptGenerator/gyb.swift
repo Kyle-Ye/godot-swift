@@ -1,4 +1,5 @@
 import TSCBasic
+import Foundation
 
 enum Source
 {
@@ -106,10 +107,7 @@ enum Source
             fatalError("empty section name")
         }
         
-        let directory:AbsolutePath  = .init(#filePath)
-            .parentDirectory
-            .parentDirectory
-            .parentDirectory
+        let directory:AbsolutePath  = AbsolutePath(NSTemporaryDirectory())
             .appending(component: ".gyb") 
             .appending(components: name.dropLast())
         guard let _:Void            = try? TSCBasic.localFileSystem
